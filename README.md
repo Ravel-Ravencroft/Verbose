@@ -19,3 +19,4 @@ Created by the 6 Members of the Hypertext Assassins team of the Informatics Inst
     - Flask-CORS
   - PyAudio
     - SpeechRecognition
+  - ReportLabs
