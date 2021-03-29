@@ -23,17 +23,11 @@ class Blockchain:
     def add_block(self, student_id, previous_hash = DEFAULT_HASH if not chain else chain[-1].compute_hash(), timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')):
         self.chain.append( Block(student_id, previous_hash, timestamp) )
 
-    def generate_json(self, student_id = None, start_date = None, end_date = None):
+    def generate_json(self, student_id = None):
         data = []
         for block in self.chain:
             if student_id is not None and block.student_id != student_id:
                 continue
-
-            elif start_date is not None and block.timestamp[0:10] < start_date:
-                continue
-
-            elif end_date is not None and block.timestamp[0:10] > end_date:
-                break
 
             data.append( block.to_string() )
 
