@@ -1,0 +1,18 @@
+<h1>Verbose: Student Record Viewer</h1>
+<p>Welcome to the Verbose Student Record Viewer</p>
+<p>Please Enter the relevant Student ID to Begin</p>
+
+<form #userForm = "ngForm" (ngSubmit) = "onSubmit()" novalidate>
+  <div>
+    <mat-form-field appearance = "fill" color = "accent" hideRequiredMarker>
+      <mat-label>Student ID</mat-label>
+      <input matInput name="id" placeholder="w1234567" required [(ngModel)] = "studentID">
+    </mat-form-field>
+
+    <button mat-fab [disabled] = "userForm.form.invalid" type = "submit">Search!</button>
+  </div>
+</form>
+
+<app-student-details
+  [id] = "studentID"
+  *ngIf = searched></app-student-details>
