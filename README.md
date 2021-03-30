@@ -15,8 +15,9 @@ Created by the 6 Members of the Hypertext Assassins team of the Informatics Inst
 
 - Python 3.8:
   - Flask
-    - Flask-RESTful
+    - Flask-APScheduler
     - Flask-CORS
+    - Flask-RESTful
   - PyAudio
     - SpeechRecognition
   - ReportLabs
