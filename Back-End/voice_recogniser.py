@@ -1,32 +1,34 @@
-import speech_recognition as sr
+from speech_recognition import Microphone, Recognizer
 from blockchain import Blockchain
 
-class main:
-    ids = ["w1761053", "w1761077", "w1790815"] #Remove in Future Iteration
+class VoiceRecogniser:
+    ids = ["w1761053", "w1761077", "w1790815"] #TODO: Integrate Teacher ID Module ASAP
     blockchain_object = Blockchain()
+
     blockchain_object.start_functionality()
 
-    r = sr.Recognizer()
-    print(sr.Microphone.list_microphone_names())
+    recognizer = Recognizer()
 
-    with sr.Microphone() as source:
-        r.adjust_for_ambient_noise(source, duration=1)
-        print("say anything : ")
-        # audio = r.listen(source, timeout=1, phrase_time_limit=10)
-        audio = r.listen(source)
+    with Microphone() as source:
+        recognizer.adjust_for_ambient_noise(source, duration=1)
+        print("\nPlease Vocalise Your Student ID: ")
+        # audio = recognizer.listen(source, timeout=1, phrase_time_limit=10)
+        audio = recognizer.listen(source)
         
         try:
-            text = r.recognize_google(audio)
+            text = recognizer.recognize_google(audio)
             edited = text.replace(" ", "").lower()
             print(edited)
 
             if edited in ids:
                 blockchain_object.add_block(edited)
-                blockchain_object.print_blockchain()
-                print("The ID is Valid")
+                print("\nThe ID is Valid")
+                print( blockchain_object.chain[-1].to_string() )
+
             else:
                 print("The ID is Invalid")
             
             blockchain_object.end_functionality()
+
         except:
-            print("Sorry could not recognize the words you said")
+            print("Error: The Speech Could Not Be Recognised")

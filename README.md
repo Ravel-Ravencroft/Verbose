@@ -6,7 +6,7 @@ Created by the 6 Members of the Hypertext Assassins team of the Informatics Inst
 ## The System Consists of:
 - A Front-End Component for the Teachers/Parents to View their Student/Child's Records.
 
-- A Back-End Compnent to Handle all Server Functionality and the Blockchain..
+- A Back-End Compnent to Handle all Server Functionality and the Blockchain.
 
 
 ## The Languages and Libraries Used:
@@ -15,7 +15,9 @@ Created by the 6 Members of the Hypertext Assassins team of the Informatics Inst
 
 - Python 3.8:
   - Flask
-    - Flask-RESTful
+    - Flask-APScheduler
     - Flask-CORS
+    - Flask-RESTful
   - PyAudio
     - SpeechRecognition
+  - ReportLabs
