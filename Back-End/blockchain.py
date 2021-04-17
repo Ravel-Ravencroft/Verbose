@@ -11,10 +11,10 @@ class Block:
         return sha256( self.compute_hash_string().encode() ).hexdigest()
 
     def compute_hash_string(self):
-        return '{} {} - {}'.format( self.timestamp, self.student_id, self.previous_hash)
+        return '{} {} - {}'.format(self.timestamp, self.student_id, self.previous_hash)
 
     def to_string(self):
-        return ( {'id': self.student_id, 'timestamp': self.timestamp} )
+        return ( {'id': self.student_id, 'date': self.timestamp[0:10], 'time': self.timestamp[11:]} )
 
 class Blockchain:
     DEFAULT_HASH = sha256( "The Default Hash".encode() ).hexdigest()
