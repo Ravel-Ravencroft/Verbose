@@ -13,11 +13,11 @@ Created by the 6 Members of the Hypertext Assassins team of the Informatics Inst
 - Angular 11:
   - Angular Material
 
-- Python 3.8:
+- Python 3.8.9:
   - Flask
     - Flask-APScheduler
     - Flask-CORS
     - Flask-RESTful
-  - PyAudio
-    - SpeechRecognition
+  - SpeechRecognition
+    - PyAudio (Requires Wheel: "https://www.lfd.uci.edu/~gohlke/pythonlibs/")
   - ReportLabs
