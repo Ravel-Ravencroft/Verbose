@@ -2,7 +2,7 @@ import atexit
 from hashlib import sha256
 from os import path
 from flask import Flask
-from flask_apscheduler import APScheduler, scheduler
+from flask_apscheduler import APScheduler
 from flask_cors import CORS
 from flask_restful import Api, Resource
 from blockchain import Blockchain
@@ -16,7 +16,7 @@ GENESIS_ID = "u5700600"
 GENESIS_HASH = sha256( "Informatics Institute of Technology".encode() ).hexdigest()
 GENESIS_DATE = "2021-01-01 00:00:00"
 
-ON_TIME = "07:45" #TODO: Edit for Institute's Time as Required.
+ON_TIME = "07:25" #TODO: Edit for Institute's Time as Required.
 
 blockchain = Blockchain()
 generator = Generator()
@@ -26,8 +26,17 @@ def start_blockchain_functionality():
 
     if( path.exists(FILE_NAME) ):
         file = open(FILE_NAME, "r")
+
         for line in file:
-            blockchain.add_block(line[20:28], line[31:].rstrip("\n"), line[0:19])
+            id = line[20:28]
+            previous_hash = line[31:].rstrip("\n")
+            timestamp = line[0:19]
+
+            if(blockchain.chain[-1].compute_hash() == previous_hash):
+                blockchain.add_block(id, previous_hash, timestamp)
+            else:
+                # TODO: Add Functionality to Handle Blockchain Tampering.
+                pass
 
     print("\n" + str(len(blockchain.chain) - 1) + " Records Have Been Parsed into the Chain!\n")
 
@@ -78,11 +87,12 @@ api.add_resource(Students, '/students')
 def send_list():
     generator.create_pdf()
     Emailer.send_email()
-    print("Email Sent!")
+    print("\nEmail Sent!\n")
 
 if __name__ == '__main__':
     start_blockchain_functionality()
-    scheduler.add_job(id = "Scheduled Email", func = send_list, trigger = 'interval', seconds = 15)
+    scheduler.init_app(app)
+    scheduler.add_job(id = "Scheduled Email", func = send_list, trigger = 'cron', hour = ON_TIME[0:2], minute = ON_TIME[3])
     scheduler.start()
     app.run(debug = False)
 
