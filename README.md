@@ -9,6 +9,8 @@ Created by the 6 Members of the Hypertext Assassins team of the Informatics Inst
 - A Back-End Component to Handle all Server Functionality and the Blockchain.
 
 - A Data Science Component to Handle Voice Recognition.
+  - The Dataset can be found at: https://drive.google.com/drive/folders/1kNgRb0XDZLLvfs4PITYiLh8iCZfQRRzV?usp=sharing.
+  - Merge the folder above with the Dataset Folder in the project.
 
 ## The Languages and Libraries Used:
 - Angular 11:
