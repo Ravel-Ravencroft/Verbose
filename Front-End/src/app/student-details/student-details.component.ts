@@ -26,7 +26,7 @@ export class StudentDetailsComponent implements OnChanges {
 	ngOnChanges() {
 		this.service.getStudentRecords(this.id).subscribe(
 			data => {
-				this.dataSource = new MatTableDataSource(data.data as Student[]);
+				this.dataSource = new MatTableDataSource(data as Student[]);
 				this.dataSource.sort = this.sort;
 			}
 		);
