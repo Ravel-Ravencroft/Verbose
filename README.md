@@ -6,18 +6,28 @@ Created by the 6 Members of the Hypertext Assassins team of the Informatics Inst
 ## The System Consists of:
 - A Front-End Component for the Teachers/Parents to View their Student/Child's Records.
 
-- A Back-End Compnent to Handle all Server Functionality and the Blockchain.
+- A Back-End Component to Handle all Server Functionality and the Blockchain.
 
+- A Data Science Component to Handle Voice Recognition.
+  - The Dataset can be found at: https://drive.google.com/drive/folders/1kNgRb0XDZLLvfs4PITYiLh8iCZfQRRzV?usp=sharing.
+  - Merge the folder above with the Dataset Folder in the project.
 
 ## The Languages and Libraries Used:
 - Angular 11:
   - Angular Material
 
-- Python 3.8:
+- Python 3.8.9:
   - Flask
     - Flask-APScheduler
     - Flask-CORS
     - Flask-RESTful
-  - PyAudio
-    - SpeechRecognition
+  - Keras
+  - Librosa
+  - NumPy
+  - Pandas
   - ReportLabs
+  - SciPy
+  - SpeechRecognition
+    - PyAudio (Requires Wheel: "https://www.lfd.uci.edu/~gohlke/pythonlibs/")
+  - TensorFlow
+  - Wheel

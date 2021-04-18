@@ -1,4 +1,4 @@
 export interface Student {
-    id : string;
-    timestamp : string;
+    date : string;
+    time : string;
 }

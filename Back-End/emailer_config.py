@@ -1,2 +1,0 @@
-EMAIL_ADDRESS = "TODO" #TODO: Enter the e-Mail(Sender). Also youu have to go to this link (https://myaccount.google.com/u/1/lesssecureapps) and enable the toggle.
-PASSWORD = "TODO" #TODO: Enter the password for the above email.

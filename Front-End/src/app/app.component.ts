@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RestService } from './rest.service';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +7,9 @@ import { RestService } from './rest.service';
 })
 export class AppComponent {
   title = 'Verbose';
-  studentID:string = "";
-  searched = false;
+  studentID : string = "";
 
-  constructor(private restService : RestService) {}
-
-  onSubmit() {
-    console.log(this.studentID);
-    this.searched = true;
+  onSubmit(id : string) {
+    this.studentID = id;
   }
 }
