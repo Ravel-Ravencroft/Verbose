@@ -1,18 +1,7 @@
-<!-- <mat-form-field appearance = "fill" color = "accent">
-    <mat-label>Punctuality</mat-label>
-    <mat-select [(value)] = "punctuality" (change)="applyFilter()">
-        <mat-option>All</mat-option>
-        <mat-option value = "absent">Absent</mat-option>
-        <mat-option value = "late">Late</mat-option>
-        <mat-option value = "on time">On Time</mat-option>
-    </mat-select>
-</mat-form-field>
-{{punctuality}} -->
-
 <table mat-table matSort [dataSource] = "dataSource" class = "mat-elevation-z8">
-    <ng-container matColumnDef = "date">
-        <th mat-header-cell mat-sort-header *matHeaderCellDef>Date</th>
-        <td mat-cell *matCellDef = "let row">{{ row.date }}</td>
+    <ng-container matColumnDef = "id">
+        <th mat-header-cell *matHeaderCellDef>Student ID</th>
+        <td mat-cell *matCellDef = "let row">{{ row.id }}</td>
     </ng-container>
 
     <ng-container matColumnDef = "time">

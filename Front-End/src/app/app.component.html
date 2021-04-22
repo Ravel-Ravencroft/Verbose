@@ -1,19 +1,33 @@
 <div id="container">
-    <h1><b>Verbose: Student Record Viewer</b></h1>
+    <h1>Verbose: Student Record Viewer</h1>
     <h3>Welcome to the Verbose Student Record Viewer</h3>
     <p>Please Enter the relevant Student ID to Begin</p>
 
     <form #userForm = "ngForm" (ngSubmit) = "onSubmit(ID.value)" novalidate>
-        <div>
-            <mat-form-field appearance = "fill" color = "accent" hideRequiredMarker>
-                <mat-label>Student ID</mat-label>
-                <input matInput name = "id" placeholder = "w1234567" type = "text" required #ID>
-            </mat-form-field>
+        <div id="form">
+            <div class="grid">
+                <mat-form-field appearance = "fill" color = "accent" hideRequiredMarker>
+                <mat-label>Student/Teacher ID</mat-label>
+                <input matInput name = "id" placeholder = "w1234567" type = "text" (keyup)="onKey($event)" required #ID>
+                </mat-form-field>
+            
+                <button mat-fab [disabled] = "userForm.form.invalid" type = "submit">Search</button>
 
-            <button mat-fab [disabled] = "userForm.form.invalid" type = "submit">Search!</button>
+                <mat-form-field appearance = "fill" color = "accent" *ngIf = "dateVisibility" hideRequiredMarker>
+                    <input matInput [matDatepicker]="picker" (dateInput)="OnDateChange($event.value)" placeholder="Choose a Date" [min] = "minDate" [max] = "maxDate" [matDatepickerFilter] = "dateFilter"  disabled required #Date>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker [startAt]="maxDate" disabled="false" #picker></mat-datepicker>
+                  </mat-form-field>
+            </div>  
         </div>
     </form>
 </div>
 
 <app-student-details
-    [id] = "studentID"></app-student-details>
+    [ID] = "id"
+    *ngIf="student"></app-student-details>
+
+<app-teacher-details
+    [ID] = "id"
+    [DATE] = "queryDate"
+    *ngIf="teacher"></app-teacher-details>

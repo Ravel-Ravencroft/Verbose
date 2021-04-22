@@ -5,16 +5,16 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class RestService {
-  url : string = "http://localhost:5000/student/"
-  testurl : string = "http://localhost:5000/students"
+  studentURL : string = "http://localhost:5000/student/"
+  classURL : string = "http://localhost:5000/class/"
 
   constructor(private http : HttpClient) { }
 
   getStudentRecords(id : string) {
-    return this.http.get<any>(this.url + id);
+    return this.http.get<any>(this.studentURL + id);
   }
 
-  // getAllRecords() {
-  //   return this.http.get<Student[]>(this.testurl);
-  // }
+  getTodayRecords(id: string, date: string) {
+    return this.http.get<any>(this.classURL + id + "/" + date);
+  }
 }
